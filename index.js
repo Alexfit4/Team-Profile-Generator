@@ -1,60 +1,77 @@
- 
-	// * Imported required packages
-	const fs = require("fs");
-	const inquirer = require("inquirer");
+// * Imported required packages
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const fs = require("fs");
+const path = require("path");
+const inquirer = require("inquirer");
 
-	//* Array of questions for user input
-	const questions = [
-		{
-			type: "input",
-			name: "name",
-			message: "Enter team member's name",
-		},
-		// {
-		// 	type: "list",
-		// 	name: "role",
-		// 	message: "Select team member's role",
-		// 	choices: ["Manager", "Engineer", "Intern"],
-		// },
-		// {
-		// 	type: "input",
-		// 	name: "ID",
-		// 	message: "Enter team member's id",
-		// },
-		// {
-		// 	type: "input",
-		// 	name: "email",
-		// 	message: "Enter team member's email",
-		// 	validate: async function (input) {
-		// 		const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		// 		if (!re.test(input)) {
-		// 			return "Input a valid email";
-		// 		}
-		// 		return true;
-		// 	},
-		// },
-		// {
-		// 	type: "input",
-		// 	name: "officeNumber",
-		// 	message: "Enter team member's office number",
-		// },
-		// {
-		// 	type: "list",
-		// 	name: "addMore",
-		// 	message: "Would you like to add more team members?",
-		// 	choices: ["Yes please", "No I'm all done"],
-		// },
-	];
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-	// * Convert to README file
+const render = require("./src/page-template.js");
 
-	let answers = inquirer.prompt(questions);
+const teamMember = [];
+const idArray = [];
 
-	answers.then((answer) => {
-		let data = generate(answer);
-		fs.writeFileSync("index.html", data);
-	});
+//* Array of questions for user input
+function appMenu() {
+	function createManager() {
+		console.log("Please build your team");
+		inquirer.prompt(questions);
+	}
+}
+const questions = [
+	{
+		type: "input",
+		name: "managerName",
+		message: "Enter team manager's name?",
+	},
+];
 
-	// * Ask prompts of questions
+// * Convert to README file
 
+let answers = inquirer.prompt(questions);
 
+answers.then((answer) => {
+	const manager = new Manager(
+		answers.managerName,
+		answers.managerId,
+		answers.managerEmail,
+		answers.managerOfficeNumber
+	);
+	teamMember.push(manager);
+	idArray.push(answers.managerId);
+	createTeam();
+	fs.writeFileSync("index.html", data);
+});
+
+function createTeam() {
+	inquirer
+		.prompt([
+			{
+				type: "list",
+				name: "memberChoice",
+				message: "Which type of team member would you like to add?",
+				choices: [
+					"Engineer",
+					"Intern",
+					"I don't want to add anymore team members",
+				],
+			},
+		])
+		.then((userChoice) => {
+			switch (userChoice.memberChoice) {
+				case "Engineer":
+					addEngineer();
+					break;
+				case "Intern":
+					adIntern();
+					break;
+				default:
+					buildTeam();
+			}
+		});
+}
+
+// * Ask prompts of questions
