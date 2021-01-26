@@ -24,11 +24,25 @@ function createManager() {
 				type: "input",
 				name: "managerName",
 				message: "Enter team manager's name?",
+				validate: async function (input) {
+					if (input.length === 0) {
+						return "Please input your name.";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
 				name: "managerEmail",
 				message: "What is your manager's email?",
+				validate: async function (input) {
+					console.log(input);
+					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (!re.test(input)) {
+						return "Input a valid email";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
@@ -39,7 +53,7 @@ function createManager() {
 				type: "input",
 				name: "managerId",
 				message: "What is your manager's id?",
-			}
+			},
 		])
 		.then((answers) => {
 			const manager = new Manager(
@@ -61,6 +75,12 @@ function addIntern() {
 				type: "input",
 				name: "internName",
 				message: "What is your intern's name?",
+				validate: async function (input) {
+					if (input.length === 0) {
+						return "Please input your name.";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
@@ -71,11 +91,25 @@ function addIntern() {
 				type: "input",
 				name: "internSchool",
 				message: "What school is your intern attending?",
+				validate: async function (input) {
+					if (input.length === 0) {
+						return "Input your Github username";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
 				name: "internEmail",
 				message: "What is your intern's email?",
+				validate: async function (input) {
+					console.log(input);
+					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (!re.test(input)) {
+						return "Input a valid email";
+					}
+					return true;
+				},
 			},
 		])
 		.then((answers) => {
@@ -98,6 +132,12 @@ function addEngineer() {
 				type: "input",
 				name: "engineerName",
 				message: "What is your engineer's name?",
+				validate: async function (input) {
+					if (input.length === 0) {
+						return "Please input your name.";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
@@ -108,11 +148,25 @@ function addEngineer() {
 				type: "input",
 				name: "github",
 				message: "What is your engineer's github?",
+				validate: async function (input) {
+					if (input.length === 0) {
+						return "Input your Github username";
+					}
+					return true;
+				},
 			},
 			{
 				type: "input",
 				name: "engineerEmail",
 				message: "What is your engineer's email?",
+				validate: async function (input) {
+					console.log(input);
+					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+					if (!re.test(input)) {
+						return "Input a valid email";
+					}
+					return true;
+				},
 			},
 		])
 		.then((answers) => {

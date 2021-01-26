@@ -11,7 +11,7 @@ const generateTeam = (team) => {
         <div class="card-body">
             <ul class="list-group">
                 <li class="list-group-item">ID: ${manager.getId()}</li>
-                <li class="list-group-item">Email:<a href="mailto:${manager.getEmail()}></a></li>
+                <li class="list-group-item">Email:<a href="mailto:${manager.getEmail()}"></a></li>
                 <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>            
             </ul>
         </div>
@@ -34,8 +34,7 @@ const generateTeam = (team) => {
 				<li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.getGithub()}</a></li>
 			</ul>
 		</div>
-	</div>
-	
+	</div>	
     `;
 	};
 
@@ -83,45 +82,38 @@ const generateTeam = (team) => {
 
 module.exports = (team) => {
 	return `
-    <!DOCTYPE html>
-<html lang="en">
+	<!DOCTYPE html>
+	<html lang="en">
+	
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-			crossorigin="anonymous"
-		/>
-
-		<link rel="stylesheet" href="style.css" />
-		<script
-			src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"
-			data-auto-a11y="true"
-		></script>
-
-		<title>Document</title>
-
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>My Team</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://kit.fontawesome.com/c502137733.js"></script>
+	</head>
+	
+	<body>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-12 jumbostron mb-3 team-heading">
+				<div class="col-12 jumbotron mb-3 team-heading">
 					<h1 class="text-center">My Team</h1>
 				</div>
 			</div>
 		</div>
-		  <div class="container">
-			  <div class="row">
-				  <div class="team-area col-12 d-flex justify-content-center">${generateTeam(
-						team
-					)}
-
-				  </div>
-			  </div>
-		  </div>
-	</head>
-	<body></body>
-</html>
+		<div class="container">
+			<div class="row">
+				<div class="team-area col-12 d-flex justify-content-center">
+					${generateTeam(team)}
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	</html>
 
     `;
 };
