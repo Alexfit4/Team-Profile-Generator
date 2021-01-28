@@ -36,7 +36,7 @@ function createManager() {
 				name: "managerEmail",
 				message: "What is your manager's email?",
 				validate: async function (input) {
-					console.log(input);
+					
 					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 					if (!re.test(input)) {
 						return "Input a valid email";
@@ -103,7 +103,7 @@ function addIntern() {
 				name: "internEmail",
 				message: "What is your intern's email?",
 				validate: async function (input) {
-					console.log(input);
+					
 					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 					if (!re.test(input)) {
 						return "Input a valid email";
@@ -160,7 +160,7 @@ function addEngineer() {
 				name: "engineerEmail",
 				message: "What is your engineer's email?",
 				validate: async function (input) {
-					console.log(input);
+					
 					const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 					if (!re.test(input)) {
 						return "Input a valid email";
