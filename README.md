@@ -22,6 +22,10 @@ A CLI program that creates a custom software development team profile page for w
 
 ## Screenshots
 
+![screenshot](https://user-images.githubusercontent.com/69173896/106205437-7fa88b80-618c-11eb-85a3-6279615f01ab.png)
+
+![Capture](https://user-images.githubusercontent.com/69173896/106205438-80412200-618c-11eb-8a3d-b218385b15a1.PNG)
+
 ## Installation
 
 ```bash
